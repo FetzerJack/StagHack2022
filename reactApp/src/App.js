@@ -24,20 +24,25 @@ const App = () => {
   }, []);
 
   const renderRowSubComponent = (row) => {
-    const {
-      name: { frst_nm, lst_nm },
-      location: { cty, adr_ln_1, zip_code },
-    } = row.original;
     return (
       <Card style={{ width: '18rem', margin: '0 auto' }}>
         <CardBody>
           <CardTitle>
-            <strong>{`${frst_nm} ${lst_nm}`} </strong>
+            <strong>{`${row.values.frst_nm} ${row.values.lst_nm}`} </strong>
           </CardTitle>
           <CardText>
-            <strong>Address:</strong>{' '}
-            {`${zip_code} - ${cty}`}
+            {`${row.values.cty}, ${row.values.st}`}
           </CardText>
+          <CardText>
+            Specialty: {`${row.values.pri_spec}`}
+          </CardText>
+          <CardText>
+            Years of Experience: {`${row.values.years_of_exp}`}
+          </CardText>
+          <CardText>
+            Quality Ranking Score: {`${row.values.total_rank}`}
+          </CardText>
+
         </CardBody>
       </Card>
     );
@@ -50,7 +55,7 @@ const App = () => {
         id: 'expander', // 'id' is required
         Cell: ({ row }) => (
           <span {...row.getToggleRowExpandedProps()}>
-            {row.isExpanded ? '👇' : '👉'}
+            {row.isExpanded ? '-' : '+'}
           </span>
         ),
       },

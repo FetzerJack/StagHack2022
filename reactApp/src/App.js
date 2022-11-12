@@ -26,22 +26,18 @@ const App = () => {
 
   const renderRowSubComponent = (row) => {
     const {
-      name: { first, last },
-      location: { city, street, postcode },
-      picture,
-      cell,
+      name: { frst_nm, lst_nm },
+      location: { cty, adr_ln_1, zip_code },
     } = row.original;
     return (
       <Card style={{ width: '18rem', margin: '0 auto' }}>
-        <CardImg top src={picture.large} alt='Card image cap' />
         <CardBody>
           <CardTitle>
-            <strong>{`${first} ${last}`} </strong>
+            <strong>{`${frst_nm} ${lst_nm}`} </strong>
           </CardTitle>
           <CardText>
-            <strong>Phone</strong>: {cell} <br />
             <strong>Address:</strong>{' '}
-            {`${street.name} ${street.number} - ${postcode} - ${city}`}
+            {`${zip_code} - ${cty}`}
           </CardText>
         </CardBody>
       </Card>
@@ -60,57 +56,32 @@ const App = () => {
         ),
       },
       {
-        Header: 'Title',
-        accessor: 'name.title',
-        disableSortBy: true,
-        Filter: SelectColumnFilter,
-        filter: 'equals',
-      },
-      {
         Header: 'First Name',
-        accessor: 'name.first',
+        accessor: 'frst_nm',
       },
       {
         Header: 'Last Name',
-        accessor: 'name.last',
+        accessor: 'lst_nm',
       },
       {
-        Header: 'Email',
-        accessor: 'email',
+        Header: 'Gender',
+        accessor: 'gndr',
       },
       {
         Header: 'City',
-        accessor: 'location.city',
+        accessor: 'cty',
       },
       {
-        Header: 'Hemisphere',
-        accessor: (values) => {
-          const { latitude, longitude } = values.location.coordinates;
-          const first = Number(latitude) > 0 ? 'N' : 'S';
-          const second = Number(longitude) > 0 ? 'E' : 'W';
-          return first + '/' + second;
-        },
-        disableSortBy: true,
-        Filter: SelectColumnFilter,
-        filter: 'equals',
-        Cell: ({ cell }) => {
-          const { value } = cell;
-
-          const pickEmoji = (value) => {
-            let first = value[0]; // N or S
-            let second = value[2]; // E or W
-            const options = ['⇖', '⇗', '⇙', '⇘'];
-            let num = first === 'N' ? 0 : 2;
-            num = second === 'E' ? num + 1 : num;
-            return options[num];
-          };
-
-          return (
-            <div style={{ textAlign: 'center', fontSize: 18 }}>
-              {pickEmoji(value)}
-            </div>
-          );
-        },
+        Header: 'State',
+        accessor: 'st',
+      },
+      {
+        Header: 'Years of Experience',
+        accessor: 'years_of_exp',
+      },
+      {
+        Header: 'Total Rank',
+        accessor: 'total_rank',
       },
     ],
     []

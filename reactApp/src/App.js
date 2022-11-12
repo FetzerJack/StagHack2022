@@ -23,16 +23,65 @@ const App = () => {
     doFetch();
   }, []);
 
+  const renderRowSubComponent = (row) => {
+    const {
+      name: { frst_nm, lst_nm },
+      location: { cty, adr_ln_1, zip_code },
+    } = row.original;
+    return (
+      <Card style={{ width: '18rem', margin: '0 auto' }}>
+        <CardBody>
+          <CardTitle>
+            <strong>{`${frst_nm} ${lst_nm}`} </strong>
+          </CardTitle>
+          <CardText>
+            <strong>Address:</strong>{' '}
+            {`${zip_code} - ${cty}`}
+          </CardText>
+        </CardBody>
+      </Card>
+    );
+  };
+
   const columns = useMemo(
     () => [
       {
         Header: () => null,
         id: 'expander', // 'id' is required
+        Cell: ({ row }) => (
+          <span {...row.getToggleRowExpandedProps()}>
+            {row.isExpanded ? '👇' : '👉'}
+          </span>
+        ),
       },
       {
         Header: 'First Name',
         accessor: 'frst_nm',
-      }
+      },
+      {
+        Header: 'Last Name',
+        accessor: 'lst_nm',
+      },
+      {
+        Header: 'Gender',
+        accessor: 'gndr',
+      },
+      {
+        Header: 'City',
+        accessor: 'cty',
+      },
+      {
+        Header: 'State',
+        accessor: 'st',
+      },
+      {
+        Header: 'Years of Experience',
+        accessor: 'years_of_exp',
+      },
+      {
+        Header: 'Total Rank',
+        accessor: 'total_rank',
+      },
     ],
     []
   );

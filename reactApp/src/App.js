@@ -63,8 +63,8 @@ const App = () => {
         accessor: 'lst_nm',
       },
       {
-        Header: 'Gender',
-        accessor: 'gndr',
+        Header: 'Specialty',
+        accessor: 'pri_spec',
       },
       {
         Header: 'City',

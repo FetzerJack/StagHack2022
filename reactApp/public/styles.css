@@ -1,9 +1,7 @@
 h1 {
-    font-size: 50px;
-    padding-top: 1em;
-    margin: 0px;
-    font-weight: 1000;
-    padding-left: 7.5em;
+    width: 100%;
+    text-align:center;
+    padding-top: 50px;
 }
 
 div {

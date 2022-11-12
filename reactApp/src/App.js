@@ -25,7 +25,7 @@ const App = () => {
 
   const renderRowSubComponent = (row) => {
     return (
-      <Card style={{ width: '18rem', margin: '0 auto' }}>
+      <Card style={{ width: '30rem', margin: '0 auto' }}>
         <CardBody>
           <CardTitle>
             <strong>{`${row.values.frst_nm} ${row.values.lst_nm}`} </strong>
@@ -41,6 +41,12 @@ const App = () => {
           </CardText>
           <CardText>
             Quality Ranking Score: {`${row.values.total_rank}`}
+          </CardText>
+          <CardText>
+          Max Medicare Pricing for New Patients: ${`${row.values.max_medicare}`}
+          </CardText>
+          <CardText>
+          Max Copay for New Patients: ${`${row.values.max_copay}`}
           </CardText>
 
         </CardBody>

@@ -91,6 +91,7 @@ const App = () => {
       <TableContainer
         columns={columns}
         data={data}
+        renderRowSubComponent={renderRowSubComponent}
       />
     </Container>
   );

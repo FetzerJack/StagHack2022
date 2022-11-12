@@ -84,6 +84,14 @@ const App = () => {
         accessor: 'years_of_exp',
       },
       {
+        Header: 'Max Medicare Pricing for New Patients',
+        accessor: 'max_medicare',
+      },
+      {
+        Header: 'Max Copay for New Patients',
+        accessor: 'max_copay',
+      },
+      {
         Header: 'Total Rank',
         accessor: 'total_rank',
       },

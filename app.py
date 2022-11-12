@@ -6,7 +6,7 @@ app=Flask(__name__)
 
 @app.route('/result')
 def get():
-    df = pd.read_csv('C:\\Users\\Jack Fetzer\\Documents\\GitHub\\StagHack2022\\Providers.csv')
+    df = pd.read_csv('Providers.csv')
     response = make_response(df.to_json(orient='records'))
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
